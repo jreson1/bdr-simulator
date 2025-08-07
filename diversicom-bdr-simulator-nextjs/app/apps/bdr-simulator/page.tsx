@@ -67,7 +67,10 @@ export default function BdrRtoRpoSimulator() {
           </div>
           <div className="mt-4 flex items-center gap-3">
             <input id="sg" type="checkbox" checked={useSafeguard} onChange={e=>setUseSafeguard(e.target.checked)} />
-            <label htmlFor="sg" className="text-sm">{useSafeguard?SAFETY.enabledLabel if False else ''}</label>
+            <label htmlFor="sg" className="text-sm">
+              {useSafeguard ? SAFEGUARD.enabledLabel : SAFEGUARD.disabledLabel}
+              {" "}(cuts RTO ~{Math.round((1 - SAFEGUARD.rtoMultiplier) * 100)}%, RPO ~{Math.round((1 - SAFEGUARD.rpoMultiplier) * 100)}%)
+            </label>
           </div>
         </div>
 
